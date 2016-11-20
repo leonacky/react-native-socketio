@@ -49,10 +49,8 @@ public class SocketIoModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void initialize(String connection, ReadableMap options) {
         try {
-            this.mSocket = IO.socket(
-                    connection,
-                    SocketIoReadableNativeMap.mapToOptions((ReadableNativeMap) options)
-            );
+	        IO.Options _options = SocketIoReadableNativeMap.mapToOptions((ReadableNativeMap) options);
+            this.mSocket = IO.socket(connection, _options);
         }
         catch(URISyntaxException exception) {
             Log.e(TAG, "Socket Initialization error: ", exception);

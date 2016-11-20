@@ -36,10 +36,16 @@ public class SocketIoJSONUtil {
                     items.pushMap(jsonObjectToWritableMap((JSONObject) object));
                 } else if (object instanceof JSONArray) {
                     items.pushArray(jsonArrayToWritableArray((JSONArray) object));
+                } else if (object instanceof String) {
+                    items.pushString(object.toString());
                 } else {
-                    Log.e(TAG, "Cannot identify JSONObject. Pushing null to the array. " +
-                            "Original unidentfied object = " + object);
-                    items.pushNull();
+					try {
+						items.pushString(object.toString());
+					} catch (Exception e) {
+						items.pushNull();
+						Log.e(TAG, "Cannot identify JSONObject. Pushing null to the array. " + "Original unidentfied object = " + object);
+					}
+                    
                 }
             }
             return items;
