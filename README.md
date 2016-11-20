@@ -2,6 +2,11 @@
 
 This project was forked from Kirkness' React Native Swift Socket.Io project
 [found here](https://github.com/kirkness/react-native-swift-socketio)
+I have implemented something:
+* For Android:
+ * options: query, host, port
+ * Accpet type string in on handler
+* For IOS: just fix some problem of syntax
 
 This project now supports both iOS and Android using the same JS calls.
 * Exceptions:
