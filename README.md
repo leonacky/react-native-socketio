@@ -114,7 +114,7 @@ Optional:
 
 - Run in your project:
 ```sh
-$ npm install react-native-socketio
+$ npm i -S https://github.com/leonacky/react-native-socketio.git
 ```
 
 #### iOS
