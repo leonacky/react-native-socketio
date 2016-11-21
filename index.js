@@ -10,6 +10,17 @@ class Socket {
       throw 'Hello there! Could you please give socket a host, please.';
     if (typeof config === 'undefined')
       config = {};
+      
+    if(config.query!=undefined && Platform.OS=='ios') {
+      let connectParamsDecode = (decodeURIComponent(config.query)).split('&');
+      let connectParams = {};
+	  for(let i in connectParamsDecode) {
+      	let param = (connectParamsDecode[i]).split('=');
+      	connectParams[param[0]] = param[1];
+      }
+      config.connectParams = connectParams;
+      delete config.query;
+    }
 
     this.sockets = SocketIO;
     this.isConnected = false;
